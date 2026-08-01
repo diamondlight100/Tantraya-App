@@ -777,7 +777,7 @@ const dakiniGallery = [
   { key: "hakini", name: "Hākinī", tag: "Ājñā", body: "Guardian of the third eye, intuition and the dissolving of duality." },
   { key: "kali", name: "Kālī", tag: "Mahā Vidyā", body: "Goddess of time, transformation, and liberation, she destroys the ego and cuts through illusion." },
   { key: "tara", name: "Tārā", tag: "Mahā Vidyā", body: "'She who saves', associated with the North Star, guiding practitioners across the ocean of suffering." },
-  { key: "durga", name: "Durgā", tag: "Mahā Vidyā", body: "The unconquerable goddess, riding a lion, protection, courage, destruction of inner and outer demons." },
+  { key: "durga", name: "Durgā", tag: "Devī", body: "The unconquerable goddess, riding a lion, protection, courage, destruction of inner and outer demons. Not one of the ten Mahā Vidyās, but a central Devī in her own right." },
   { key: "tripura", name: "Tripura-Sundarī", tag: "Mahā Vidyā", body: "Beauty of the three worlds, presides over the Śrī Yantra and the Śrī Vidyā tradition." },
 ];
 

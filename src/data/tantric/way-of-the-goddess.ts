@@ -629,6 +629,10 @@ export const tantraChapters: TantraChapter[] = [
         body: "A yantra can be 'brought to life' through Prāṇa Pratiṣṭhā, installation of the life-force, though it can still be used to good effect without this ceremony. Once alive, it is treated as a living presence, regularly fed through offerings. A mālā, prayer bead string, is traditionally chosen by material to suit the deity: rudraksha for Śiva, black onyx or bone for Kālī. Traditionally the mālā never touches the index finger, which represents the ego; beads are rolled between thumb and the middle knuckle of the middle finger instead.",
       },
       {
+        heading: "On counting repetitions",
+        body: "108 is the traditional count for a full round of japa: it corresponds to the 108 names or forms attributed to many deities, and to the 27 lunar constellations (nakṣatras) multiplied by their four pādas. A mālā of 108 beads, plus one guru bead never counted in the recitation, lets a practitioner complete a round without counting aloud. Shorter sessions of 27 or 54 repetitions are also traditional and entirely legitimate, not a lesser version of the practice.",
+      },
+      {
         heading: "Open and closed practices",
         body: "Some mantras are 'closed' or 'sealed', requiring initiation (dīkṣā) from a qualified teacher before their fuller power is said to flow. Others are 'open', freely usable by any sincere practitioner. Open practices are a genuine and honourable entry point; many practitioners build a deep, transformative relationship with an openly received mantra long before ever encountering formal initiation.",
       },
