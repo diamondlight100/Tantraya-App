@@ -700,7 +700,7 @@ export function PathwayMaterials({
       )}
 
       <Dialog open={!!readingId} onOpenChange={(v) => !v && setReadingId(null)}>
-        <DialogContent className="flex h-[85vh] max-w-5xl flex-col gap-0 p-0">
+        <DialogContent className="flex h-[96vh] w-[96vw] max-w-[96vw] flex-col gap-0 p-0">
           {readingId &&
             (() => {
               const reading = materials.find((m) => m.id === readingId);
