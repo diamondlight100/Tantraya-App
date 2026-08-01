@@ -569,6 +569,7 @@ export const chakraData = [
     color: "#8f78c9", bija: "Kṣaṃ + all 50 letters", dakini: null, dakiniMantra: null,
     quality: "Ultimate integration and realization",
     petals: "All 50 letters of the Sanskrit alphabet",
+    mahavidya: null,
     note: "The site of union between Śiva and Śakti, the dawning of non-dual awareness and Moksha. No single Ḍākinī presides; all sound converges here.",
   },
   {
@@ -576,6 +577,7 @@ export const chakraData = [
     color: "#5a4a8a", bija: "Oṃ (traditional)", dakini: "Hākinī", dakiniMantra: null,
     quality: "Intuition and wisdom",
     petals: "Haṃ, Kṣaṃ",
+    mahavidya: "Chinnamastā — the upward surge of intense spiritual awakening, and the severing of thought constructs.",
     note: "The seat of inner vision, direct knowing, and the dissolving of the duality between perceiver and perceived.",
   },
   {
@@ -583,6 +585,7 @@ export const chakraData = [
     color: "#3a6e8c", bija: "Haṃ (traditional)", dakini: "Śākinī", dakiniMantra: "Oṃ Hrīṃ Klīṃ Śākiṇyai Viche",
     quality: "Pure, unmanifest speech and creativity",
     petals: "The sixteen vowels, A through Aḥ",
+    mahavidya: null,
     note: "The center of truth, purification, and communication.",
   },
   {
@@ -590,6 +593,7 @@ export const chakraData = [
     color: "#4f7a4a", bija: "Yaṃ (traditional)", dakini: "Kākinī", dakiniMantra: "Oṃ Hrīṃ Klīṃ Kākiṇyai Viche",
     quality: "Love and compassion",
     petals: "Kaṃ, Khaṃ, Gaṃ, Ghaṃ, Ṅaṃ, Caṃ, Chaṃ, Jaṃ, Jhaṃ, Ñaṃ, Ṭaṃ, Ṭhaṃ",
+    mahavidya: "Bhuvaneśvarī — the expansive space (ākāśa), the divine matrix within which the soul resides.",
     note: "A fully awakened heart radiates a presence others feel palpably.",
   },
   {
@@ -597,6 +601,7 @@ export const chakraData = [
     color: "#c9a84c", bija: "Raṃ (traditional)", dakini: "Lākinī", dakiniMantra: "Oṃ Hrīṃ Klīṃ Lākiṇyai Viche",
     quality: "Transformation and personal power",
     petals: "Ḍaṃ, Ḍhaṃ, Ṇaṃ, Taṃ, Thaṃ, Daṃ, Dhaṃ, Naṃ, Paṃ, Phaṃ",
+    mahavidya: null,
     note: "Meditation here is traditionally linked to natural immunity, longevity, and supersensory perception.",
   },
   {
@@ -604,6 +609,7 @@ export const chakraData = [
     color: "#c9793a", bija: "Vaṃ", dakini: "Rākiṇī", dakiniMantra: "Oṃ Śrīṃ Klīṃ Rākiṇyai Viche",
     quality: "Flow of emotion and creativity",
     petals: "Baṃ, Bhaṃ, Maṃ, Yaṃ, Raṃ, Laṃ",
+    mahavidya: "Tārā — the flow of inner sound, vital currents, the fluid movement of creative consciousness.",
     note: "Seat of the life force in its generative, expressive dimension.",
   },
   {
@@ -611,6 +617,7 @@ export const chakraData = [
     color: "#b3423a", bija: "Laṃ", dakini: "Ḍākinī", dakiniMantra: "Oṃ Hrīṃ Klīṃ Ḍākinyai Viche",
     quality: "Foundational earth energy",
     petals: "Vaṃ, Śaṃ, Ṣaṃ, Saṃ",
+    mahavidya: "Kālī — primal grounding, time, and the foundation of raw life force and Kuṇḍalinī.",
     note: "Traditionally linked to natural health, stability, and a strengthened intellect.",
   },
 ];
@@ -701,6 +708,13 @@ export function ChakraExplorer() {
             <p className="text-[9px] uppercase tracking-[0.2em] text-muted-foreground">Petal letters</p>
             <p className="mt-0.5 font-serif text-sm text-foreground">{c.petals}</p>
           </div>
+
+          {c.mahavidya && (
+            <div className="mt-2 rounded-md border border-gold/40 bg-gold/5 p-2">
+              <p className="text-[9px] uppercase tracking-[0.2em] text-gold">Mahā Vidyā</p>
+              <p className="mt-0.5 text-xs text-foreground/90">{c.mahavidya}</p>
+            </div>
+          )}
 
           <p className="mt-3 text-sm text-foreground/85">
             <span className="text-gold">{c.quality}.</span> {c.note}
