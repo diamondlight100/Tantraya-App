@@ -15,7 +15,9 @@ export type TantraChapter = {
     | "chakra-explorer"
     | "dakini-gallery"
     | "sound-circuits"
-    | "digital-mala";
+    | "digital-mala"
+    | "matrika-chant"
+    | "kara-nyasa";
   practice?: { steps: { title: string; detail: string; seconds?: number }[] };
   quiz: { q: string; options: string[]; answer: number; explain: string }[];
   journalPrompts: string[];
@@ -332,16 +334,8 @@ export const tantraChapters: TantraChapter[] = [
         body: "The vowels carry unmanifest energy, pure potential, speech before it takes form, with each one holding its own cosmological correspondence, from A (the root of creation) to O/Au (the union of opposites and ultimate self-realisation). The consonants carry manifest energy, mapped to the five elements: Ka to fire, Ga to earth, Ca to wind, Ṭa to sky, Pa to water. Learning to hear the elements inside ordinary consonants is itself a quiet form of meditation.",
       },
     ],
-    widget: "om-visualizer",
-    practice: {
-      steps: [
-        { title: "A, creation", detail: "Chant or silently intone 'A', feeling it open at the base of the throat.", seconds: 30 },
-        { title: "U, preservation", detail: "Move the sound forward and up through the mouth as 'U'.", seconds: 30 },
-        { title: "M, dissolution", detail: "Close the sound into 'M', lips sealed, feeling it hum and fade.", seconds: 30 },
-        { title: "Turiya, the silence", detail: "Rest in the gap after the sound has fully dissolved. Don't rush to begin again.", seconds: 60 },
-        { title: "Repeat", detail: "Cycle through A-U-M-silence three more times, slowing with each round.", seconds: 90 },
-      ],
-    },
+    widget: "matrika-chant",
+    practice: { steps: [] },
     quiz: [
       {
         q: "What is Turiya?",
@@ -378,9 +372,9 @@ export const tantraChapters: TantraChapter[] = [
       },
     ],
     journalPrompts: [
-      "What did you notice in the silence after M, before the next round began?",
+      "Chanting through the fifty letters, which sound produced the clearest sensation, and where did you feel it?",
       "Does 'sound as reality itself' change how you'll approach mantra practice?",
-      "Which single Sanskrit sound, if any, already feels familiar in your body?",
+      "Which single Sanskrit sound, if any, already felt familiar in your body before today?",
     ],
   },
 
@@ -405,16 +399,8 @@ export const tantraChapters: TantraChapter[] = [
         body: "Tantric practice doesn't move through the Koshas one at a time and then stop, it engages all five simultaneously: the physical through posture and breath, the energetic through prāṇāyāma and Nyāsa, the mental through mantra and visualisation, the wisdom-layer through contemplation, and the bliss-layer through devotion and ritual union.",
       },
     ],
-    widget: "kosha-pyramid",
-    practice: {
-      steps: [
-        { title: "Annamaya", detail: "Feel the weight and texture of the physical body against the seat.", seconds: 30 },
-        { title: "Prāṇamaya", detail: "Follow the breath as it moves, the layer beneath the physical.", seconds: 30 },
-        { title: "Manomaya", detail: "Notice thought and feeling arising and passing, without following them.", seconds: 30 },
-        { title: "Vijñānamaya", detail: "Sense the quiet intelligence that is aware of the thoughts themselves.", seconds: 30 },
-        { title: "Ānandamaya", detail: "Rest, however briefly, in simple ease, the bliss sheath needs no reason.", seconds: 60 },
-      ],
-    },
+    widget: "kara-nyasa",
+    practice: { steps: [] },
     quiz: [
       {
         q: "What does the word Nyāsa literally mean?",
@@ -436,9 +422,9 @@ export const tantraChapters: TantraChapter[] = [
       },
     ],
     journalPrompts: [
-      "Which Kosha did you find easiest to sense today? Which was hardest?",
+      "Working through the six points, did any one place feel more alive or more resistant than the others?",
       "What would it feel like to treat your hands as tools of transmission, the way Nyāsa does?",
-      "Where do you already, without naming it, work with more than one layer of yourself at once?",
+      "Which of the five Koshas did you find easiest to sense today? Which was hardest?",
     ],
   },
 
@@ -462,19 +448,12 @@ export const tantraChapters: TantraChapter[] = [
         heading: "Union at the crown",
         body: "The final destination is the Sahasrāra Chakra, where Śiva (pure consciousness) and Śakti (dynamic energy) unite, the dawning of non-dual awareness and the liberation called Moksha. Traditional teaching also links sustained meditation on each individual chakra to specific capacities, offered here as traditional framing rather than medical claim.",
       },
+      {
+        heading: "Signs of genuine movement",
+        body: "When Kuṇḍalinī genuinely begins to move, students often report spontaneous heat or coolness travelling along the spine, involuntary movements (kriyās), an altered sense of time, and waves of bliss or grief that ask to be released rather than analysed. A steadier, more diagnostic sign than any of these in the moment is what happens between sessions: a growing clarity of mind that persists off the cushion, not only during practice.",
+      },
     ],
     widget: "chakra-explorer",
-    practice: {
-      steps: [
-        { title: "Ground at Mūlādhāra", detail: "Feel the base of the spine, heavy and supported. Silently sound Laṃ.", seconds: 40 },
-        { title: "Flow at Svādhiṣṭhāna", detail: "Soften the belly below the navel. Silently sound Vaṃ.", seconds: 40 },
-        { title: "Ignite at Maṇipūra", detail: "Bring warmth to the solar plexus. Silently sound Raṃ.", seconds: 40 },
-        { title: "Open at Anāhata", detail: "Expand the chest gently. Silently sound Yaṃ.", seconds: 40 },
-        { title: "Clear at Viśuddha", detail: "Relax the throat. Silently sound Haṃ.", seconds: 40 },
-        { title: "Focus at Ājñā", detail: "Rest attention between the eyebrows, unmoving.", seconds: 40 },
-        { title: "Rest at Sahasrāra", detail: "Let attention dissolve upward and outward at the crown. No sound, only silence.", seconds: 60 },
-      ],
-    },
     quiz: [
       {
         q: "Where does Kuṇḍalinī Śakti traditionally rest before it is awakened?",

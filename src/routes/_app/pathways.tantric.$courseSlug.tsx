@@ -33,6 +33,8 @@ import {
   DakiniGallery,
   SoundCircuits,
   DigitalMala,
+  MatrikaChant,
+  KaraNyasa,
 } from "@/components/course/tantra-widgets";
 
 export const Route = createFileRoute("/_app/pathways/tantric/$courseSlug")({
@@ -79,6 +81,10 @@ function ChapterWidget({ kind }: { kind?: TantraChapter["widget"] }) {
       return <SoundCircuits />;
     case "digital-mala":
       return <DigitalMala />;
+    case "matrika-chant":
+      return <MatrikaChant />;
+    case "kara-nyasa":
+      return <KaraNyasa />;
     default:
       return null;
   }
@@ -142,7 +148,7 @@ function ChapterCard({ chapter, courseSlug }: { chapter: TantraChapter; courseSl
         {chapter.practice && (
           <TabsContent value="practice" className="mt-5 space-y-5">
             <ChapterWidget kind={chapter.widget} />
-            <PracticeTimer steps={chapter.practice.steps} />
+            {chapter.practice.steps.length > 0 && <PracticeTimer steps={chapter.practice.steps} />}
             <RelatedPractices
               pathway="tantric"
               courseSlug={courseSlug}

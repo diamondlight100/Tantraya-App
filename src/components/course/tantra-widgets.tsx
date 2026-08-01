@@ -319,6 +319,208 @@ export function OmVisualizer() {
   );
 }
 
+/* ═══════════════════════════ Mātṛkā Chant (flagship) ═══════════════════════════ */
+/* Traditional A-to-Kṣa sequence, the fifty letters of the Sanskrit alphabet, each
+   tagged with the chakra whose petal it sits on (Woodroffe / Serpent Power scheme).
+   This is the actual practice named in the source manuscript: recite each letter
+   slowly, pause, and notice where in the body or mind it seems to resonate. */
+
+export const matrikaLetters = [
+  // Vishuddha — the sixteen vowels
+  { dev: "अ", iast: "A", chakra: "Viśuddha" }, { dev: "आ", iast: "Ā", chakra: "Viśuddha" },
+  { dev: "इ", iast: "I", chakra: "Viśuddha" }, { dev: "ई", iast: "Ī", chakra: "Viśuddha" },
+  { dev: "उ", iast: "U", chakra: "Viśuddha" }, { dev: "ऊ", iast: "Ū", chakra: "Viśuddha" },
+  { dev: "ऋ", iast: "Ṛ", chakra: "Viśuddha" }, { dev: "ॠ", iast: "Ṝ", chakra: "Viśuddha" },
+  { dev: "ऌ", iast: "Ḷ", chakra: "Viśuddha" }, { dev: "ॡ", iast: "Ḹ", chakra: "Viśuddha" },
+  { dev: "ए", iast: "E", chakra: "Viśuddha" }, { dev: "ऐ", iast: "Ai", chakra: "Viśuddha" },
+  { dev: "ओ", iast: "O", chakra: "Viśuddha" }, { dev: "औ", iast: "Au", chakra: "Viśuddha" },
+  { dev: "अं", iast: "Aṃ", chakra: "Viśuddha" }, { dev: "अः", iast: "Aḥ", chakra: "Viśuddha" },
+  // Anāhata — gutturals, palatals, cerebrals
+  { dev: "क", iast: "Ka", chakra: "Anāhata" }, { dev: "ख", iast: "Kha", chakra: "Anāhata" },
+  { dev: "ग", iast: "Ga", chakra: "Anāhata" }, { dev: "घ", iast: "Gha", chakra: "Anāhata" },
+  { dev: "ङ", iast: "Ṅa", chakra: "Anāhata" },
+  { dev: "च", iast: "Ca", chakra: "Anāhata" }, { dev: "छ", iast: "Cha", chakra: "Anāhata" },
+  { dev: "ज", iast: "Ja", chakra: "Anāhata" }, { dev: "झ", iast: "Jha", chakra: "Anāhata" },
+  { dev: "ञ", iast: "Ña", chakra: "Anāhata" },
+  { dev: "ट", iast: "Ṭa", chakra: "Anāhata" }, { dev: "ठ", iast: "Ṭha", chakra: "Anāhata" },
+  // Maṇipūra — cerebral/dental/labial
+  { dev: "ड", iast: "Ḍa", chakra: "Maṇipūra" }, { dev: "ढ", iast: "Ḍha", chakra: "Maṇipūra" },
+  { dev: "ण", iast: "Ṇa", chakra: "Maṇipūra" },
+  { dev: "त", iast: "Ta", chakra: "Maṇipūra" }, { dev: "थ", iast: "Tha", chakra: "Maṇipūra" },
+  { dev: "द", iast: "Da", chakra: "Maṇipūra" }, { dev: "ध", iast: "Dha", chakra: "Maṇipūra" },
+  { dev: "न", iast: "Na", chakra: "Maṇipūra" },
+  { dev: "प", iast: "Pa", chakra: "Maṇipūra" }, { dev: "फ", iast: "Pha", chakra: "Maṇipūra" },
+  // Svādhiṣṭhāna — remaining labials and semivowels
+  { dev: "ब", iast: "Ba", chakra: "Svādhiṣṭhāna" }, { dev: "भ", iast: "Bha", chakra: "Svādhiṣṭhāna" },
+  { dev: "म", iast: "Ma", chakra: "Svādhiṣṭhāna" }, { dev: "य", iast: "Ya", chakra: "Svādhiṣṭhāna" },
+  { dev: "र", iast: "Ra", chakra: "Svādhiṣṭhāna" }, { dev: "ल", iast: "La", chakra: "Svādhiṣṭhāna" },
+  // Mūlādhāra — va and the sibilants
+  { dev: "व", iast: "Va", chakra: "Mūlādhāra" }, { dev: "श", iast: "Śa", chakra: "Mūlādhāra" },
+  { dev: "ष", iast: "Ṣa", chakra: "Mūlādhāra" }, { dev: "स", iast: "Sa", chakra: "Mūlādhāra" },
+  // Ājñā — ha and the compound kṣa
+  { dev: "ह", iast: "Ha", chakra: "Ājñā" }, { dev: "क्ष", iast: "Kṣa", chakra: "Ājñā" },
+];
+
+const chakraTone: Record<string, string> = {
+  Mūlādhāra: "#b3423a", Svādhiṣṭhāna: "#c9793a", Maṇipūra: "#c9a84c",
+  Anāhata: "#4f7a4a", Viśuddha: "#3a6e8c", Ājñā: "#5a4a8a",
+};
+
+export function MatrikaChant() {
+  const [idx, setIdx] = useState(0);
+  const [table, setTable] = useState(false);
+  const letter = matrikaLetters[idx];
+  const done = idx === matrikaLetters.length - 1;
+
+  return (
+    <div className="rounded-xl border border-gold/40 bg-card/70 p-5">
+      <div className="flex items-center justify-between">
+        <p className="text-[10px] uppercase tracking-[0.3em] text-gold">Mātṛkā Chant · A to Kṣa</p>
+        <button
+          onClick={() => setTable((t) => !t)}
+          className="rounded-full border border-border/60 px-3 py-1 text-[10px] uppercase tracking-widest text-muted-foreground hover:border-gold/60"
+        >
+          {table ? "Chant" : "Correspondence table"}
+        </button>
+      </div>
+
+      {!table ? (
+        <>
+          <div className="mt-4 flex flex-col items-center">
+            <p className="text-xs text-muted-foreground">Letter {idx + 1} of {matrikaLetters.length}</p>
+            <div
+              className="mt-3 flex h-32 w-32 flex-col items-center justify-center rounded-full border-2"
+              style={{ borderColor: chakraTone[letter.chakra], backgroundColor: `${chakraTone[letter.chakra]}22` }}
+            >
+              <span className="font-serif text-5xl text-foreground">{letter.dev}</span>
+              <span className="mt-1 font-serif text-lg text-gold">{letter.iast}</span>
+            </div>
+            <p className="mt-3 text-sm" style={{ color: chakraTone[letter.chakra] }}>
+              Sits on {letter.chakra}
+            </p>
+            <p className="mt-2 max-w-xs text-center text-xs text-muted-foreground">
+              Sound it slowly, and pause. Notice where in the body or mind it seems to resonate before moving to the next.
+            </p>
+          </div>
+
+          <div className="mt-4 h-1.5 w-full overflow-hidden rounded-full bg-secondary/40">
+            <div
+              className="h-full bg-gradient-to-r from-gold/70 to-gold transition-all"
+              style={{ width: `${((idx + 1) / matrikaLetters.length) * 100}%` }}
+            />
+          </div>
+
+          <div className="mt-4 flex justify-between gap-2">
+            <button
+              onClick={() => setIdx((i) => Math.max(0, i - 1))}
+              disabled={idx === 0}
+              className="rounded-md border border-border/60 px-3 py-1.5 text-xs hover:border-gold/60 disabled:opacity-40"
+            >
+              ← Previous
+            </button>
+            <button
+              onClick={() => setIdx(0)}
+              className="rounded-md border border-border/60 px-3 py-1.5 text-xs text-muted-foreground hover:border-gold/60"
+            >
+              Restart
+            </button>
+            <button
+              onClick={() => setIdx((i) => Math.min(matrikaLetters.length - 1, i + 1))}
+              disabled={done}
+              className="rounded-md bg-gold px-3 py-1.5 text-xs text-gold-foreground hover:opacity-90 disabled:opacity-40"
+            >
+              Next →
+            </button>
+          </div>
+          {done && (
+            <p className="mt-3 text-center text-[11px] italic text-gold">
+              All fifty sounded. Over repeated sittings, students often report growing sensitivity to which sounds carry which states — this is the point, not speed.
+            </p>
+          )}
+        </>
+      ) : (
+        <div className="mt-4 space-y-1.5 text-xs">
+          {["Viśuddha", "Anāhata", "Maṇipūra", "Svādhiṣṭhāna", "Mūlādhāra", "Ājñā"].map((ch) => (
+            <div key={ch} className="flex items-center gap-2 rounded-md border border-border/50 bg-background/40 p-2">
+              <span className="h-2.5 w-2.5 shrink-0 rounded-full" style={{ backgroundColor: chakraTone[ch] }} />
+              <span className="w-24 shrink-0 font-serif text-primary">{ch}</span>
+              <span className="text-muted-foreground">
+                {matrikaLetters.filter((l) => l.chakra === ch).map((l) => l.iast).join(", ")}
+              </span>
+            </div>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
+
+/* ═══════════════════════════ Kara Nyāsa ═══════════════════════════ */
+/* The classical six-point Ṣaḍaṅga formula used across virtually every Tantric puja
+   paddhati to install mantra into the hands before deeper practice. This is the
+   generic structure, not tied to any one deity's specific bīja — a specific
+   sādhanā would prefix each point with that deity's own seed syllable. */
+
+const karaPoints = [
+  { key: "angustha", label: "Aṅguṣṭha", part: "Thumbs", ending: "Namaḥ", x: 50, y: 18 },
+  { key: "tarjani", label: "Tarjanī", part: "Index fingers", ending: "Svāhā", x: 22, y: 30 },
+  { key: "madhyama", label: "Madhyamā", part: "Middle fingers", ending: "Vaṣaṭ", x: 50, y: 60 },
+  { key: "anamika", label: "Anāmikā", part: "Ring fingers", ending: "Hūṃ", x: 78, y: 30 },
+  { key: "kanishtha", label: "Kaniṣṭhikā", part: "Little fingers", ending: "Vauṣaṭ", x: 15, y: 60 },
+  { key: "karatala", label: "Karatala–Karapṛṣṭha", part: "Palm and back of hand", ending: "Phaṭ", x: 50, y: 88 },
+];
+
+export function KaraNyasa() {
+  const [active, setActive] = useState(0);
+  const p = karaPoints[active];
+  return (
+    <div className="rounded-xl border border-border/60 bg-card/70 p-5">
+      <p className="text-[10px] uppercase tracking-[0.3em] text-gold">Kara Nyāsa · the six-point formula</p>
+      <div className="mt-4 flex flex-col items-center gap-5 sm:flex-row sm:items-start">
+        <svg viewBox="0 0 100 100" className="h-52 w-52 shrink-0">
+          <circle cx="50" cy="50" r="46" fill="none" stroke="currentColor" className="text-border" strokeWidth="0.5" />
+          {karaPoints.map((pt, i) => (
+            <g key={pt.key} onClick={() => setActive(i)} className="cursor-pointer">
+              <circle
+                cx={pt.x} cy={pt.y} r={active === i ? 9 : 7}
+                className={cn("transition-all stroke-gold/60", active === i ? "fill-gold" : "fill-card")}
+                strokeWidth="1.5"
+              />
+              <text x={pt.x} y={pt.y + 3} textAnchor="middle" className={cn("font-serif text-[6px]", active === i ? "fill-gold-foreground" : "fill-primary")}>
+                {i + 1}
+              </text>
+            </g>
+          ))}
+        </svg>
+        <div className="flex-1">
+          <p className="font-serif text-2xl text-primary">{p.label}</p>
+          <p className="text-[10px] uppercase tracking-[0.25em] text-gold">{p.part}</p>
+          <p className="mt-3 rounded-md border border-border/60 bg-background/40 p-2 text-center font-serif text-lg text-foreground">
+            Oṃ … {p.ending}
+          </p>
+          <p className="mt-3 text-xs text-muted-foreground">
+            Place your own chosen mantra's seed syllable before the ending shown, and touch this point as you speak it.
+          </p>
+        </div>
+      </div>
+      <div className="mt-4 flex flex-wrap gap-1.5">
+        {karaPoints.map((pt, i) => (
+          <button
+            key={pt.key}
+            onClick={() => setActive(i)}
+            className={cn(
+              "rounded-full border px-2.5 py-1 text-[10px] transition",
+              active === i ? "border-gold bg-gold/10 text-primary" : "border-border/60 text-muted-foreground hover:border-gold/50",
+            )}
+          >
+            {pt.label}
+          </button>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 /* ═══════════════════════════ Kosha Pyramid ═══════════════════════════ */
 
 const koshas = [
@@ -366,43 +568,50 @@ export const chakraData = [
     key: "sahasrara", n: "VII", name: "Sahasrāra", label: "Crown", location: "Crown of the head",
     color: "#8f78c9", bija: "Kṣaṃ + all 50 letters", dakini: null, dakiniMantra: null,
     quality: "Ultimate integration and realization",
+    petals: "All 50 letters of the Sanskrit alphabet",
     note: "The site of union between Śiva and Śakti, the dawning of non-dual awareness and Moksha. No single Ḍākinī presides; all sound converges here.",
   },
   {
     key: "ajna", n: "VI", name: "Ājñā", label: "Third Eye", location: "Between the eyebrows",
     color: "#5a4a8a", bija: "Oṃ (traditional)", dakini: "Hākinī", dakiniMantra: null,
     quality: "Intuition and wisdom",
-    note: "Vowels of intuition. The seat of inner vision, direct knowing, and the dissolving of the duality between perceiver and perceived.",
+    petals: "Haṃ, Kṣaṃ",
+    note: "The seat of inner vision, direct knowing, and the dissolving of the duality between perceiver and perceived.",
   },
   {
     key: "vishuddha", n: "V", name: "Viśuddha", label: "Throat", location: "The throat",
     color: "#3a6e8c", bija: "Haṃ (traditional)", dakini: "Śākinī", dakiniMantra: "Oṃ Hrīṃ Klīṃ Śākiṇyai Viche",
     quality: "Pure, unmanifest speech and creativity",
-    note: "All vowels live here. The center of truth, purification, and communication.",
+    petals: "The sixteen vowels, A through Aḥ",
+    note: "The center of truth, purification, and communication.",
   },
   {
     key: "anahata", n: "IV", name: "Anāhata", label: "Heart", location: "Heart center",
     color: "#4f7a4a", bija: "Yaṃ (traditional)", dakini: "Kākinī", dakiniMantra: "Oṃ Hrīṃ Klīṃ Kākiṇyai Viche",
     quality: "Love and compassion",
-    note: "Mixed guttural/palatal/cerebral letters. A fully awakened heart radiates a presence others feel palpably.",
+    petals: "Kaṃ, Khaṃ, Gaṃ, Ghaṃ, Ṅaṃ, Caṃ, Chaṃ, Jaṃ, Jhaṃ, Ñaṃ, Ṭaṃ, Ṭhaṃ",
+    note: "A fully awakened heart radiates a presence others feel palpably.",
   },
   {
     key: "manipura", n: "III", name: "Maṇipūra", label: "Solar Plexus", location: "Navel region",
     color: "#c9a84c", bija: "Raṃ (traditional)", dakini: "Lākinī", dakiniMantra: "Oṃ Hrīṃ Klīṃ Lākiṇyai Viche",
     quality: "Transformation and personal power",
-    note: "Dental/labial letters. Meditation here is traditionally linked to natural immunity, longevity, and supersensory perception.",
+    petals: "Ḍaṃ, Ḍhaṃ, Ṇaṃ, Taṃ, Thaṃ, Daṃ, Dhaṃ, Naṃ, Paṃ, Phaṃ",
+    note: "Meditation here is traditionally linked to natural immunity, longevity, and supersensory perception.",
   },
   {
     key: "svadhisthana", n: "II", name: "Svādhiṣṭhāna", label: "Sacral", location: "Opposite the pubic bone",
     color: "#c9793a", bija: "Vaṃ", dakini: "Rākiṇī", dakiniMantra: "Oṃ Śrīṃ Klīṃ Rākiṇyai Viche",
     quality: "Flow of emotion and creativity",
-    note: "Petals: Haṃ, Khaṃ, Gaṃ, Paṃ, Yaṃ, Vaṃ. Seat of the life force in its generative, expressive dimension.",
+    petals: "Baṃ, Bhaṃ, Maṃ, Yaṃ, Raṃ, Laṃ",
+    note: "Seat of the life force in its generative, expressive dimension.",
   },
   {
     key: "muladhara", n: "I", name: "Mūlādhāra", label: "Root", location: "Base of the spine / perineum",
     color: "#b3423a", bija: "Laṃ", dakini: "Ḍākinī", dakiniMantra: "Oṃ Hrīṃ Klīṃ Ḍākinyai Viche",
     quality: "Foundational earth energy",
-    note: "Petals: Vaṃ, Raṃ, Laṃ, Śaṃ. Traditionally linked to natural health, stability, and a strengthened intellect.",
+    petals: "Vaṃ, Śaṃ, Ṣaṃ, Saṃ",
+    note: "Traditionally linked to natural health, stability, and a strengthened intellect.",
   },
 ];
 
@@ -487,6 +696,11 @@ export function ChakraExplorer() {
           {c.dakiniMantra && (
             <p className="mt-2 text-[11px] italic text-muted-foreground">{c.dakiniMantra}</p>
           )}
+
+          <div className="mt-2 rounded-md border border-border/60 bg-background/40 p-2">
+            <p className="text-[9px] uppercase tracking-[0.2em] text-muted-foreground">Petal letters</p>
+            <p className="mt-0.5 font-serif text-sm text-foreground">{c.petals}</p>
+          </div>
 
           <p className="mt-3 text-sm text-foreground/85">
             <span className="text-gold">{c.quality}.</span> {c.note}
