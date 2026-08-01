@@ -1,0 +1,22 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(pdftotext -layout \"/Users/pauldiamond/Downloads/Beyond the Threshold of Death.pdf\" phowa.txt)",
+      "Bash(python3 -c \"import pypdf\")",
+      "Bash(python3 -c \"import pdfplumber\")",
+      "Bash(pip3 install *)",
+      "Bash(python3 -c ' *)",
+      "Bash(mdls -name kMDItemNumberOfPages \"/Users/pauldiamond/Downloads/Beyond the Threshold of Death.pdf\")",
+      "Bash(brew install *)",
+      "Bash(grep -n \"^13$\" \"/private/tmp/claude-501/-Users-pauldiamond-Downloads-project-2/8f9ee7ff-16e3-4a8c-9c36-1ab5df6ca754/scratchpad/phowa.txt\")",
+      "Bash(pdftoppm -v)",
+      "Skill(artifact-design)",
+      "Skill(artifact-design:*)",
+      "Bash(pkill -f \"http.server 8934\")",
+      "Bash(mkdir -p \"/Users/pauldiamond/Downloads/project 2/src/assets/buddhist/phowa\")",
+      "Read(//private/tmp/**)",
+      "Bash(npx prettier *)",
+      "Bash(npx eslint *)"
+    ]
+  }
+}
