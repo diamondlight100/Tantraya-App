@@ -563,6 +563,25 @@ export function KoshaPyramid() {
 
 /* ═══════════════════════════ Chakra Explorer (flagship) ═══════════════════════════ */
 
+/* Three Mahā Vidyā seats that sit at subtle points beyond the standard seven chakras. */
+const beyondSevenPoints = [
+  {
+    key: "dhumavati", mahavidya: "Dhūmāvatī", point: "Manas · the hidden void",
+    color: "#6b6558",
+    body: "Rather than a location on the spine, Dhūmāvatī's seat is the quiet void within the mind itself, mirrored in the stillness held at the heart center. She governs dissolution, emptiness, and what remains when everything else has been given up.",
+  },
+  {
+    key: "bagalamukhi", mahavidya: "Bagalāmukhī", point: "Bindu · the upper palate",
+    color: "#8a3a3a",
+    body: "Seated at the Bindu, near the upper palate, Bagalāmukhī commands stillness itself: the paralysis of duality, the arrest of scattered speech and thought, and the infinite potential held in total quiet.",
+  },
+  {
+    key: "kamalatmika", mahavidya: "Kamalātmikā", point: "Lalanā / Tālu, near the upper palate",
+    color: "#c9a84c",
+    body: "Kamalātmikā's seat at the Lalanā (Tālu) chakra, just above the palate, is traditionally where nectar (amṛta) is said to gather and drip, the point of both bliss and material-spiritual fulfilment.",
+  },
+];
+
 export const chakraData = [
   {
     key: "sahasrara", n: "VII", name: "Sahasrāra", label: "Crown", location: "Crown of the head",
@@ -585,7 +604,7 @@ export const chakraData = [
     color: "#3a6e8c", bija: "Haṃ (traditional)", dakini: "Śākinī", dakiniMantra: "Oṃ Hrīṃ Klīṃ Śākiṇyai Viche",
     quality: "Pure, unmanifest speech and creativity",
     petals: "The sixteen vowels, A through Aḥ",
-    mahavidya: null,
+    mahavidya: "Mātaṅgī — the mastery of word, art, and transcendent wisdom.",
     note: "The center of truth, purification, and communication.",
   },
   {
@@ -601,7 +620,7 @@ export const chakraData = [
     color: "#c9a84c", bija: "Raṃ (traditional)", dakini: "Lākinī", dakiniMantra: "Oṃ Hrīṃ Klīṃ Lākiṇyai Viche",
     quality: "Transformation and personal power",
     petals: "Ḍaṃ, Ḍhaṃ, Ṇaṃ, Taṃ, Thaṃ, Daṃ, Dhaṃ, Naṃ, Paṃ, Phaṃ",
-    mahavidya: null,
+    mahavidya: "Tripura-Sundarī — inner radiance, and the supreme binding of the cosmos.",
     note: "Meditation here is traditionally linked to natural immunity, longevity, and supersensory perception.",
   },
   {
@@ -725,6 +744,22 @@ export function ChakraExplorer() {
               Union of Śiva and Śakti, the non-dual nature of reality, and the dawning of Moksha.
             </p>
           )}
+        </div>
+      </div>
+
+      <div className="mt-6 border-t border-border/50 pt-4">
+        <p className="text-[10px] uppercase tracking-[0.3em] text-gold">Beyond the Seven</p>
+        <p className="mt-1 text-xs text-muted-foreground">
+          Three further Mahā Vidyā seats sit at subtle points outside the main seven-chakra column.
+        </p>
+        <div className="mt-3 grid gap-2 sm:grid-cols-3">
+          {beyondSevenPoints.map((p) => (
+            <div key={p.key} className="rounded-lg border p-3" style={{ borderColor: `${p.color}55` }}>
+              <p className="font-serif text-base text-primary">{p.mahavidya}</p>
+              <p className="text-[10px] uppercase tracking-[0.2em]" style={{ color: p.color }}>{p.point}</p>
+              <p className="mt-1.5 text-xs leading-relaxed text-foreground/80">{p.body}</p>
+            </div>
+          ))}
         </div>
       </div>
     </div>
