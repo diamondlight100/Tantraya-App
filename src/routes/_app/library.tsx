@@ -418,7 +418,7 @@ function LibraryRow({
       </li>
 
       <Dialog open={readerOpen} onOpenChange={setReaderOpen}>
-        <DialogContent className="max-w-5xl h-[85vh] flex flex-col p-0 gap-0">
+        <DialogContent className="h-[96vh] w-[96vw] max-w-[96vw] flex flex-col p-0 gap-0">
           <DialogHeader className="border-b border-border/60 p-4">
             <DialogTitle className="font-serif text-lg text-primary">
               {item.title}
